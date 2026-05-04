@@ -1,7 +1,7 @@
 # Nebula Home Frontend
 
 <p align="center">
-  <a href="https://github.com/MilkyWay-HomeLabs/nebula-home">
+  <a href="https://github.com/MilkyWay-HomeLabs/nebula-front-app-public">
     <img alt="Repo" src="https://img.shields.io/badge/Repo-GitHub-0f172a?style=for-the-badge&logo=github&logoColor=white">
   </a>
   <img alt="Version" src="https://img.shields.io/badge/Version-4.0.0--Public%20Beta-2563eb?style=for-the-badge">
@@ -102,7 +102,7 @@ Installation Steps
 Clone the Repository
 
 ```bash
-git clone https://github.com/MilkyWay-HomeLabs/nebula-home.git
+git clone https://github.com/MilkyWay-HomeLabs/nebula-front-app-public.git
 cd nebula-home
 ```
 
