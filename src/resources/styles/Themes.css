@@ -1,0 +1,757 @@
+:root {
+    --general-bg-color-head: #282928;
+    --general-bg-color-head-inverted: white;
+    --general-text-color-head: white;
+    --general-text-color-head-inverted: #282928;
+    --general-bg-color-body: #f0f0f0;
+    --general-text-color-body: #333333;
+    --error-color: #710101;
+    --border-color: #af0101;
+    --border-color-secondary: #fff;
+    --border-color-third: #ccc;
+    --star-achievement-empty: #000000;
+    --star-achievement-full: gold;
+    --button-blue: #3498db;
+    --button-green: #43c602;
+    --button-green-hover: #49e804;
+    /* neutral: show game icons in their natural colors on the default light background */
+    --game-button-filter: none;
+    --horizontal-line: black;
+    --tf-bg: #fff;
+    --tf-txt: #0b0b0b;
+    --tf-border: #ced4da;
+    --tf-disabled-bg: #e9ecef;
+    --tf-disabled-txt: #818181;
+    --tf-focus-bg: #80bdff;
+    --tf-focus-box-shadow: rgba(0, 123, 255, 0.25);
+    --fs-label-bg: #3498db;
+    --fs-label-txt: #fff;
+    --input-bg: #fff;
+    --input-txt: #495057;
+    --input-border: #ced4da;
+    --input-focus-bg: #fff;
+    --input-focus-border: #80bdff;
+    --input-focus-box-shadow: rgba(0, 123, 255, .25);
+    /* game tile card colors — light body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — dark header */
+    --menu-item-hover: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="Fire"] {
+    --general-bg-color-head: #D32F2F;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #D32F2F;
+    --general-bg-color-body: #FFEBEE;
+    --general-text-color-body: #B71C1C;
+    --error-color: #C62828;
+    --border-color: #E57373;
+    --border-color-secondary: #D32F2F;
+    --border-color-third: #E57373;
+    --star-achievement-empty: #880E4F;
+    --star-achievement-full: #D32F2F;
+    --button-blue: #D32F2F;
+    --button-green: #B71C1C;
+    --button-green-hover: #8E1010;
+    /* warm red tint on light pink background — good contrast */
+    --game-button-filter: invert(18%) sepia(80%) saturate(600%) hue-rotate(340deg) brightness(88%) contrast(90%);
+    --horizontal-line: #B71C1C;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #B71C1C;
+    --tf-border: #D32F2F;
+    --tf-disabled-bg: #FFCDD2;
+    --tf-disabled-txt: #A1887F;
+    --tf-focus-bg: #FFEBEE;
+    --tf-focus-box-shadow: rgba(211, 47, 47, 0.25);
+    --fs-label-bg: #E53935;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #B71C1C;
+    --input-border: #D32F2F;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #C62828;
+    --input-focus-box-shadow: rgba(211, 47, 47, 0.25);
+    /* game tile card colors — light body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — dark red header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Atom"] {
+    --general-bg-color-head: #D32F2F;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #D32F2F;
+    --general-bg-color-body: #850000;
+    --general-text-color-body: #FFFFFF;
+    --error-color: #FF5252;
+    --border-color: #FF1744;
+    --border-color-secondary: #FF8A80;
+    --border-color-third: #CC3333;
+    --star-achievement-empty: #4A0000;
+    --star-achievement-full: #FFD700;
+    --button-blue: #2196F3;
+    --button-green: #D32F2F;
+    --button-green-hover: #B71C1C;
+    /* bright cyan tint on dark red background — high contrast */
+    --game-button-filter: invert(85%) sepia(30%) saturate(300%) hue-rotate(160deg) brightness(100%) contrast(92%);
+    --horizontal-line: #FFCDD2;
+    --tf-bg: #4A0000;
+    --tf-txt: #FFFFFF;
+    --tf-border: #FF5252;
+    --tf-disabled-bg: #2A0000;
+    --tf-disabled-txt: #757575;
+    --tf-focus-bg: #5A0000;
+    --tf-focus-box-shadow: rgba(255, 82, 82, 0.4);
+    --fs-label-bg: #D32F2F;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #212121;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #FF5252;
+    --input-focus-box-shadow: rgba(255, 82, 82, 0.3);
+    /* game tile card colors — dark body */
+    --game-tile-bg: rgba(255, 255, 255, 0.10);
+    --game-tile-border: rgba(255, 255, 255, 0.18);
+    --game-tile-hover: rgba(255, 255, 255, 0.16);
+    /* menu item hover — dark red header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Water"] {
+    --general-bg-color-head: #003B73;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #003B73;
+    --general-bg-color-body: #89A7C1;
+    --general-text-color-body: #001E40;
+    --error-color: #D32F2F;
+    --border-color: #004E92;
+    --border-color-secondary: #003B73;
+    --border-color-third: #001E40;
+    --star-achievement-empty: #A3BDD2;
+    --star-achievement-full: #FFD700;
+    --button-blue: #0073E6;
+    --button-green: #003B73;
+    --button-green-hover: #002B53;
+    /* deep blue tint on medium blue background — clear contrast */
+    --game-button-filter: invert(15%) sepia(70%) saturate(800%) hue-rotate(195deg) brightness(85%) contrast(95%);
+    --horizontal-line: #001E40;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #001E40;
+    --tf-border: #003B73;
+    --tf-disabled-bg: #ACC7DD;
+    --tf-disabled-txt: #6B879B;
+    --tf-focus-bg: #EAF2F8;
+    --tf-focus-box-shadow: rgba(0, 59, 115, 0.3);
+    --fs-label-bg: #003B73;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #001E40;
+    --input-border: #A3BDD2;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #0073E6;
+    --input-focus-box-shadow: rgba(0, 115, 230, 0.25);
+    /* game tile card colors — medium blue body */
+    --game-tile-bg: rgba(0, 0, 0, 0.10);
+    --game-tile-border: rgba(0, 0, 0, 0.18);
+    --game-tile-hover: rgba(0, 0, 0, 0.16);
+    /* menu item hover — dark blue header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Ice"] {
+    --general-bg-color-head: #009ACD;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #009ACD;
+    --general-bg-color-body: #DFF8FF;
+    --general-text-color-body: #003F5C;
+    --error-color: #D32F2F;
+    --border-color: #00B2CC;
+    --border-color-secondary: #009ACD;
+    --border-color-third: #009ACD;
+    --star-achievement-empty: #B2DDEE;
+    --star-achievement-full: #FFD700;
+    --button-blue: #1C86EE;
+    --button-green: #009ACD;
+    --button-green-hover: #007AAB;
+    /* deep blue-cyan on very light blue — good contrast */
+    --game-button-filter: invert(18%) sepia(65%) saturate(500%) hue-rotate(188deg) brightness(82%) contrast(95%);
+    --horizontal-line: #41729F;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #003F5C;
+    --tf-border: #009ACD;
+    --tf-disabled-bg: #BDE4E6;
+    --tf-disabled-txt: #5B9DA4;
+    --tf-focus-bg: #EAFBFF;
+    --tf-focus-box-shadow: rgba(0, 154, 205, 0.3);
+    --fs-label-bg: #009ACD;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #003F5C;
+    --input-border: #ADD8E6;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #009ACD;
+    --input-focus-box-shadow: rgba(0, 154, 205, 0.25);
+    /* game tile card colors — very light blue body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — medium blue header */
+    --menu-item-hover: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="Earth"] {
+    --general-bg-color-head: #6B8E23;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #6B8E23;
+    --general-bg-color-body: #FAFAD2;
+    --general-text-color-body: #3C3C1E;
+    --error-color: #A40000;
+    --border-color: #9ACD9A;
+    --border-color-secondary: #6B8E23;
+    --border-color-third: #6B8E23;
+    --star-achievement-empty: #D9D9D9;
+    --star-achievement-full: #6B8E23;
+    --button-blue: #5A9BD8;
+    --button-green: #3CA24F;
+    --button-green-hover: #2E854B;
+    /* olive-green tint on light yellow — raised brightness for good contrast */
+    --game-button-filter: invert(20%) sepia(70%) saturate(400%) hue-rotate(108deg) brightness(80%) contrast(88%);
+    --horizontal-line: #666600;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #3C3C1E;
+    --tf-border: #6B8E23;
+    --tf-disabled-bg: #E6E6E6;
+    --tf-disabled-txt: #808080;
+    --tf-focus-bg: #FFF8DC;
+    --tf-focus-box-shadow: rgba(107, 142, 35, 0.25);
+    --fs-label-bg: #6B8E23;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #3C3C1E;
+    --input-border: #CFC99C;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #6B8E23;
+    --input-focus-box-shadow: rgba(107, 142, 35, 0.25);
+    /* game tile card colors — light yellow-green body */
+    --game-tile-bg: rgba(0, 0, 0, 0.06);
+    --game-tile-border: rgba(0, 0, 0, 0.10);
+    --game-tile-hover: rgba(0, 0, 0, 0.10);
+    /* menu item hover — olive green header */
+    --menu-item-hover: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="Gravity"] {
+    --general-bg-color-head: #2E8B57;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #2E8B57;
+    --general-bg-color-body: #F5FFFA;
+    --general-text-color-body: #004D00;
+    --error-color: #A52A2A;
+    --border-color: #66CDAA;
+    --border-color-secondary: #2E8B57;
+    --border-color-third: #2E8B57;
+    --star-achievement-empty: #A9FBB8;
+    --star-achievement-full: #2E8B57;
+    --button-blue: #48D1CC;
+    --button-green: #2E8B57;
+    --button-green-hover: #238E23;
+    /* forest green on near-white mint — raised brightness for clear visibility */
+    --game-button-filter: invert(20%) sepia(70%) saturate(400%) hue-rotate(120deg) brightness(80%) contrast(88%);
+    --horizontal-line: #6B8E23;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #004D00;
+    --tf-border: #2E8B57;
+    --tf-disabled-bg: #DCDCDC;
+    --tf-disabled-txt: #808080;
+    --tf-focus-bg: #F0FFF0;
+    --tf-focus-box-shadow: rgba(46, 139, 87, 0.25);
+    --fs-label-bg: #2E8B57;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #004D00;
+    --input-border: #A3D9A5;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #2E8B57;
+    --input-focus-box-shadow: rgba(46, 139, 87, 0.25);
+    /* game tile card colors — very light mint body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — medium green header */
+    --menu-item-hover: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="Wind"] {
+    --general-bg-color-head: #FFC107;
+    --general-bg-color-head-inverted: #000000;
+    --general-text-color-head: #000000;
+    --general-text-color-head-inverted: #FFC107;
+    --general-bg-color-body: #FAFAFA;
+    --general-text-color-body: #222222;
+    --error-color: #D32F2F;
+    --border-color: #BFBFBF;
+    --border-color-secondary: #006400;
+    --border-color-third: #757575;
+    --star-achievement-empty: #D6D6D6;
+    --star-achievement-full: #FFC107;
+    --button-blue: #1976D2;
+    --button-green: #FFC107;
+    --button-green-hover: #FFB300;
+    /* golden-amber tint on white — moderate contrast */
+    --game-button-filter: invert(8%) sepia(80%) saturate(1800%) hue-rotate(28deg) brightness(88%) contrast(92%);
+    --horizontal-line: #BFBFBF;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #222222;
+    --tf-border: #FFC107;
+    --tf-disabled-bg: #F0F0F0;
+    --tf-disabled-txt: #888888;
+    --tf-focus-bg: #FFFDE7;
+    --tf-focus-box-shadow: rgba(255, 193, 7, 0.3);
+    --fs-label-bg: #FFC107;
+    --fs-label-txt: #000000;
+    --input-bg: #FFFFFF;
+    --input-txt: #222222;
+    --input-border: #BFBFBF;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #FFC107;
+    --input-focus-box-shadow: rgba(255, 193, 7, 0.3);
+    /* game tile card colors — near-white body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — light yellow header needs darker overlay */
+    --menu-item-hover: rgba(0, 0, 0, 0.10);
+}
+
+[data-theme="Sonic"] {
+    --general-bg-color-head: #E60000;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #E60000;
+    --general-bg-color-body: #005A9C;
+    --general-text-color-body: #FFFFFF;
+    --error-color: #FFEA00;
+    --border-color: #E60000;
+    --border-color-secondary: #FFFFFF;
+    --border-color-third: #4D90CC;
+    --star-achievement-empty: #003A66;
+    --star-achievement-full: #FFEA00;
+    --button-blue: #FFFFFF;
+    --button-green: #E60000;
+    --button-green-hover: #B30000;
+    /* bright electric-blue tint on dark blue body — high contrast */
+    --game-button-filter: invert(88%) sepia(20%) saturate(2000%) hue-rotate(188deg) brightness(108%) contrast(88%);
+    --horizontal-line: #FFFFFF;
+    --tf-bg: #003A66;
+    --tf-txt: #FFFFFF;
+    --tf-border: #E60000;
+    --tf-disabled-bg: #002A4D;
+    --tf-disabled-txt: #80BFFF;
+    --tf-focus-bg: #004A80;
+    --tf-focus-box-shadow: rgba(230, 0, 0, 0.5);
+    --fs-label-bg: #E60000;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #000000;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #E60000;
+    --input-focus-box-shadow: rgba(230, 0, 0, 0.3);
+    /* game tile card colors — dark blue body */
+    --game-tile-bg: rgba(255, 255, 255, 0.10);
+    --game-tile-border: rgba(255, 255, 255, 0.18);
+    --game-tile-hover: rgba(255, 255, 255, 0.16);
+    /* menu item hover — dark red header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Thunder"] {
+    --general-bg-color-head: #F4A300;
+    --general-bg-color-head-inverted: #000000;
+    --general-text-color-head: #000000;
+    --general-text-color-head-inverted: #F4A300;
+    --general-bg-color-body: #4E1C04;
+    --general-text-color-body: #FFFFFF;
+    --error-color: #FF3D00;
+    --border-color: #D5721D;
+    --border-color-secondary: #FFC700;
+    --border-color-third: #8A4010;
+    --star-achievement-empty: #2E1202;
+    --star-achievement-full: #FFC700;
+    --button-blue: #007D7D;
+    --button-green: #F4A300;
+    --button-green-hover: #D68F00;
+    /* warm amber-gold on very dark brown — bright and visible */
+    --game-button-filter: invert(75%) sepia(60%) saturate(500%) hue-rotate(20deg) brightness(100%) contrast(90%);
+    --horizontal-line: #FFC700;
+    --tf-bg: #2E1202;
+    --tf-txt: #FFFFFF;
+    --tf-border: #F4A300;
+    --tf-disabled-bg: #1A0A01;
+    --tf-disabled-txt: #7B2A04;
+    --tf-focus-bg: #3E1805;
+    --tf-focus-box-shadow: rgba(244, 163, 0, 0.4);
+    --fs-label-bg: #F4A300;
+    --fs-label-txt: #000000;
+    --input-bg: #FFFFFF;
+    --input-txt: #000000;
+    --input-border: #FFC700;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #F4A300;
+    --input-focus-box-shadow: rgba(244, 163, 0, 0.3);
+    /* game tile card colors — very dark brown body */
+    --game-tile-bg: rgba(255, 255, 255, 0.10);
+    --game-tile-border: rgba(255, 255, 255, 0.18);
+    --game-tile-hover: rgba(255, 255, 255, 0.16);
+    /* menu item hover — amber header needs darker overlay */
+    --menu-item-hover: rgba(0, 0, 0, 0.10);
+}
+
+[data-theme="Electro"] {
+    --general-bg-color-head: #FF9900;
+    --general-bg-color-head-inverted: #000000;
+    --general-text-color-head: #000000;
+    --general-text-color-head-inverted: #FF9900;
+    --general-bg-color-body: #FFF7DA;
+    --general-text-color-body: #3E3E00;
+    --error-color: #C14500;
+    --border-color: #E0751D;
+    --border-color-secondary: #FF9900;
+    --border-color-third: #D4A520;
+    --star-achievement-empty: #FF5733;
+    --star-achievement-full: #FFCC00;
+    --button-blue: #FF8C00;
+    --button-green: #FF9900;
+    --button-green-hover: #E68A00;
+    /* warm amber-orange on light cream — darker for contrast */
+    --game-button-filter: invert(10%) sepia(90%) saturate(300%) hue-rotate(28deg) brightness(80%) contrast(90%);
+    --horizontal-line: #FF5733;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #3E3E00;
+    --tf-border: #FF9900;
+    --tf-disabled-bg: #FFD9A0;
+    --tf-disabled-txt: #7B3A12;
+    --tf-focus-bg: #FFFBE6;
+    --tf-focus-box-shadow: rgba(255, 153, 0, 0.3);
+    --fs-label-bg: #FF9900;
+    --fs-label-txt: #000000;
+    --input-bg: #FFFFFF;
+    --input-txt: #000000;
+    --input-border: #FF9900;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #FF9900;
+    --input-focus-box-shadow: rgba(255, 153, 0, 0.25);
+    /* game tile card colors — light cream body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — orange header needs darker overlay */
+    --menu-item-hover: rgba(0, 0, 0, 0.10);
+}
+
+[data-theme="Poison"] {
+    --general-bg-color-head: #8F78D7;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #4A0466;
+    --general-bg-color-body: #EFEAFD;
+    --general-text-color-body: #3F307A;
+    --error-color: #D32F2F;
+    --border-color: #A852C7;
+    --border-color-secondary: #8F78D7;
+    --border-color-third: #8F78D7;
+    --star-achievement-empty: #E8E8FA;
+    --star-achievement-full: #8F78D7;
+    --button-blue: #7B22C6;
+    --button-green: #8F78D7;
+    --button-green-hover: #7A66C1;
+    /* deep purple on light lavender — good contrast */
+    --game-button-filter: invert(20%) sepia(70%) saturate(1200%) hue-rotate(252deg) brightness(80%) contrast(92%);
+    --horizontal-line: #3F307A;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #3F307A;
+    --tf-border: #8F78D7;
+    --tf-disabled-bg: #CBCBCB;
+    --tf-disabled-txt: #606060;
+    --tf-focus-bg: #F5F3FF;
+    --tf-focus-box-shadow: rgba(143, 120, 215, 0.3);
+    --fs-label-bg: #8F78D7;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #3F307A;
+    --input-border: #A852C7;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #8F78D7;
+    --input-focus-box-shadow: rgba(143, 120, 215, 0.25);
+    /* game tile card colors — very light lavender body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — medium purple header */
+    --menu-item-hover: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="Virus"] {
+    --general-bg-color-head: #660A84;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #660A84;
+    --general-bg-color-body: #2A1A5E;
+    --general-text-color-body: #F1F1FF;
+    --error-color: #FF5252;
+    --border-color: #660A84;
+    --border-color-secondary: #A27ECD;
+    --border-color-third: #6040A0;
+    --star-achievement-empty: #1A0F3D;
+    --star-achievement-full: #FFD700;
+    --button-blue: #A23BCC;
+    --button-green: #660A84;
+    --button-green-hover: #500868;
+    /* bright lime-green on dark purple — sharp contrast */
+    --game-button-filter: invert(90%) sepia(20%) saturate(400%) hue-rotate(80deg) brightness(96%) contrast(95%);
+    --horizontal-line: #A27ECD;
+    --tf-bg: #1A0F3D;
+    --tf-txt: #F1F1FF;
+    --tf-border: #660A84;
+    --tf-disabled-bg: #0F0924;
+    --tf-disabled-txt: #53409D;
+    --tf-focus-bg: #231554;
+    --tf-focus-box-shadow: rgba(102, 10, 132, 0.5);
+    --fs-label-bg: #660A84;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #000000;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #660A84;
+    --input-focus-box-shadow: rgba(102, 10, 132, 0.3);
+    /* game tile card colors — dark indigo body */
+    --game-tile-bg: rgba(255, 255, 255, 0.10);
+    --game-tile-border: rgba(255, 255, 255, 0.18);
+    --game-tile-hover: rgba(255, 255, 255, 0.16);
+    /* menu item hover — deep purple header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Ki"] {
+    --general-bg-color-head: #005B88;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #005B88;
+    --general-bg-color-body: #EDEDED;
+    --general-text-color-body: #292929;
+    --error-color: #D32F2F;
+    --border-color: #005B88;
+    --border-color-secondary: #005B88;
+    --border-color-third: #757575;
+    --star-achievement-empty: #BDBDBD;
+    --star-achievement-full: #FACC00;
+    --button-blue: #2F5CAC;
+    --button-green: #005B88;
+    --button-green-hover: #004669;
+    /* dark navy-blue on light gray — high contrast */
+    --game-button-filter: invert(15%) sepia(75%) saturate(2000%) hue-rotate(184deg) brightness(82%) contrast(100%);
+    --horizontal-line: #555555;
+    --tf-bg: #FFFFFF;
+    --tf-txt: #292929;
+    --tf-border: #005B88;
+    --tf-disabled-bg: #BDBDBD;
+    --tf-disabled-txt: #7A7A7A;
+    --tf-focus-bg: #F0F7FF;
+    --tf-focus-box-shadow: rgba(0, 91, 136, 0.25);
+    --fs-label-bg: #005B88;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #292929;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #005B88;
+    --input-focus-box-shadow: rgba(0, 91, 136, 0.25);
+    /* game tile card colors — light gray body */
+    --game-tile-bg: rgba(0, 0, 0, 0.06);
+    --game-tile-border: rgba(0, 0, 0, 0.10);
+    --game-tile-hover: rgba(0, 0, 0, 0.10);
+    /* menu item hover — dark blue header */
+    --menu-item-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="Holy"] {
+    --general-bg-color-head: #ffd9a3;
+    --general-bg-color-head-inverted: #1a1a1a;
+    --general-text-color-head: #1a1a1a;
+    --general-text-color-head-inverted: #ffffff;
+    --general-bg-color-body: #eeeeee;
+    --general-text-color-body: #2a2a2a;
+    --error-color: #d32f2f;
+    --border-color: #bbbbbb;
+    --border-color-secondary: #2a2a2a;
+    --border-color-third: #999999;
+    --star-achievement-empty: #bbbbbb;
+    --star-achievement-full: #ffcc00;
+    --button-blue: #3b62cc;
+    --button-green: #2eb82e;
+    --button-green-hover: #248a24;
+    /* warm gold-peach on light gray — warm and clear */
+    --game-button-filter: invert(8%) sepia(60%) saturate(800%) hue-rotate(20deg) brightness(85%) contrast(90%);
+    --horizontal-line: #bbbbbb;
+    --tf-bg: #ffffff;
+    --tf-txt: #2a2a2a;
+    --tf-border: #bbbbbb;
+    --tf-disabled-bg: #eaeaea;
+    --tf-disabled-txt: #808080;
+    --tf-focus-bg: #f0f7ff;
+    --tf-focus-box-shadow: rgba(59, 98, 204, 0.25);
+    --fs-label-bg: #ffcc00;
+    --fs-label-txt: #1a1a1a;
+    --input-bg: #ffffff;
+    --input-txt: #2a2a2a;
+    --input-border: #bbbbbb;
+    --input-focus-bg: #ffffff;
+    --input-focus-border: #3b62cc;
+    --input-focus-box-shadow: rgba(59, 98, 204, 0.25);
+    /* game tile card colors — light gray body */
+    --game-tile-bg: rgba(0, 0, 0, 0.06);
+    --game-tile-border: rgba(0, 0, 0, 0.10);
+    --game-tile-hover: rgba(0, 0, 0, 0.10);
+    /* menu item hover — light peach header needs darker overlay */
+    --menu-item-hover: rgba(0, 0, 0, 0.10);
+}
+
+[data-theme="Dark"] {
+    --general-bg-color-head: #333333;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #333333;
+    --general-bg-color-body: #121212;
+    --general-text-color-body: #E0E0E0;
+    --error-color: #FF5252;
+    --border-color: #333333;
+    --border-color-secondary: #484848;
+    /* increased for footer border visibility on very dark body */
+    --border-color-third: #606060;
+    --star-achievement-empty: #2C2C2C;
+    --star-achievement-full: #FFD700;
+    --button-blue: #2196F3;
+    --button-green: #388E3C;
+    --button-green-hover: #2E7D32;
+    /* teal-blue on near-black — clear bright contrast */
+    --game-button-filter: invert(78%) sepia(50%) saturate(300%) hue-rotate(158deg) brightness(96%) contrast(92%);
+    --horizontal-line: #484848;
+    --tf-bg: #1E1E1E;
+    --tf-txt: #E0E0E0;
+    --tf-border: #333333;
+    --tf-disabled-bg: #2C2C2C;
+    --tf-disabled-txt: #757575;
+    --tf-focus-bg: #2C2C2C;
+    --tf-focus-box-shadow: rgba(33, 150, 243, 0.3);
+    --fs-label-bg: #388E3C;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #212121;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #2196F3;
+    --input-focus-box-shadow: rgba(33, 150, 243, 0.25);
+    /* game tile card colors — very dark body */
+    --game-tile-bg: rgba(255, 255, 255, 0.07);
+    --game-tile-border: rgba(255, 255, 255, 0.14);
+    --game-tile-hover: rgba(255, 255, 255, 0.12);
+    /* menu item hover — dark gray header */
+    --menu-item-hover: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="Umbra"] {
+    --general-bg-color-head: #324047;
+    --general-bg-color-head-inverted: #FFFFFF;
+    --general-text-color-head: #FFFFFF;
+    --general-text-color-head-inverted: #324047;
+    --general-bg-color-body: #12191C;
+    --general-text-color-body: #E0E6E8;
+    --error-color: #FF5252;
+    --border-color: #324047;
+    --border-color-secondary: #4B636C;
+    /* increased for footer border visibility on very dark body */
+    --border-color-third: #5A7580;
+    --star-achievement-empty: #1F292E;
+    --star-achievement-full: #FFD700;
+    --button-blue: #1976D2;
+    --button-green: #2E7D32;
+    --button-green-hover: #1B5E20;
+    /* cool blue-gray tint on very dark blue-gray — readable contrast */
+    --game-button-filter: invert(78%) sepia(15%) saturate(800%) hue-rotate(192deg) brightness(92%) contrast(94%);
+    --horizontal-line: #4B636C;
+    --tf-bg: #1F292E;
+    --tf-txt: #E0E6E8;
+    --tf-border: #324047;
+    --tf-disabled-bg: #12191C;
+    --tf-disabled-txt: #4B636C;
+    --tf-focus-bg: #263238;
+    --tf-focus-box-shadow: rgba(25, 118, 210, 0.3);
+    --fs-label-bg: #2E7D32;
+    --fs-label-txt: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-txt: #212121;
+    --input-border: #BDBDBD;
+    --input-focus-bg: #FFFFFF;
+    --input-focus-border: #1976D2;
+    --input-focus-box-shadow: rgba(25, 118, 210, 0.25);
+    /* game tile card colors — very dark blue-gray body */
+    --game-tile-bg: rgba(255, 255, 255, 0.07);
+    --game-tile-border: rgba(255, 255, 255, 0.14);
+    --game-tile-hover: rgba(255, 255, 255, 0.12);
+    /* menu item hover — dark teal-gray header */
+    --menu-item-hover: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="Default"] {
+    --general-bg-color-head: #1e1f1e;
+    --general-bg-color-head-inverted: #ffffff;
+    --general-text-color-head: #ffffff;
+    --general-text-color-head-inverted: #1e1f1e;
+    --general-bg-color-body: #f7f7f7;
+    --general-text-color-body: #2b2b2b;
+    --error-color: #d32f2f;
+    --border-color: #e63946;
+    --border-color-secondary: #ffffff;
+    --border-color-third: #dcdcdc;
+    --star-achievement-empty: #bdbdbd;
+    --star-achievement-full: #ffc107;
+    --button-blue: #1d72b8;
+    --button-green: #2ecc71;
+    --button-green-hover: #27ae60;
+    /* teal-blue on near-white — clear and thematic */
+    --game-button-filter: invert(20%) sepia(60%) saturate(400%) hue-rotate(185deg) brightness(82%) contrast(90%);
+    --horizontal-line: #333333;
+    --tf-bg: #ffffff;
+    --tf-txt: #2b2b2b;
+    --tf-border: #dcdcdc;
+    --tf-disabled-bg: #f0f0f0;
+    --tf-disabled-txt: #9c9c9c;
+    --tf-focus-bg: #f0f7ff;
+    --tf-focus-box-shadow: rgba(29, 114, 184, 0.25);
+    --fs-label-bg: #1d72b8;
+    --fs-label-txt: #ffffff;
+    --input-bg: #ffffff;
+    --input-txt: #2b2b2b;
+    --input-border: #ced4da;
+    --input-focus-bg: #ffffff;
+    --input-focus-border: #1d72b8;
+    --input-focus-box-shadow: rgba(29, 114, 184, 0.25);
+    /* game tile card colors — near-white body */
+    --game-tile-bg: rgba(0, 0, 0, 0.05);
+    --game-tile-border: rgba(0, 0, 0, 0.09);
+    --game-tile-hover: rgba(0, 0, 0, 0.09);
+    /* menu item hover — very dark header */
+    --menu-item-hover: rgba(255, 255, 255, 0.12);
+}

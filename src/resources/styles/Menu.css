@@ -1,0 +1,278 @@
+/*
+   Theme-aware Menu styles — use theme variables from Themes.css
+   Minimal comments; rely on CSS custom properties defined in Themes.css
+*/
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 10px 18px;
+    box-sizing: border-box;
+
+    background: var(--general-bg-color-head);
+    color: var(--general-text-color-head);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* subtle elevated look */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* left & right sections layout */
+.menu-container .left-section,
+.menu-container .right-section {
+    display: flex;
+    align-items: center;
+}
+
+/* logo */
+.Menu-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 14px;
+    filter: var(--game-button-filter);
+    cursor: pointer;
+}
+
+/* central menu items */
+.menu-items {
+    display: flex;
+    align-items: center;
+}
+
+.menu-items .menu-items {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+/* single item */
+.menu-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--general-text-color-head);
+    transition: background 180ms ease, transform 120ms ease;
+}
+
+/* icon inside menu item */
+.menu-item img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: var(--game-button-filter);
+}
+
+/* label */
+.menu-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--general-text-color-head);
+    white-space: nowrap;
+}
+
+/* hover/active — use theme variable so overlay is visible on both light and dark headers */
+.menu-item:hover {
+    background: var(--menu-item-hover, rgba(255, 255, 255, 0.12));
+    transform: translateY(-1px);
+}
+
+.menu-item:active {
+    transform: translateY(0);
+}
+
+/* right section: avatar and popup */
+.avatar-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* subtle ring around avatar on hover */
+.avatar-container:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* popup menu */
+.popup-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--general-bg-color-head-inverted, #fff);
+    color: var(--general-text-color-head-inverted, #000);
+    border-radius: 10px;
+    padding: 8px;
+    min-width: 160px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1100;
+}
+
+/* popup menu item */
+.popup-menu div {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: inherit;
+}
+
+.popup-menu div:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* file input hidden is already inline style in JSX */
+
+/* responsive adjustments */
+@media (max-width: 880px) {
+    .menu-container {
+        padding: 8px 12px;
+    }
+
+    .Menu-logo {
+        width: 36px;
+        height: 36px;
+        margin-right: 10px;
+    }
+
+    .menu-items .menu-items {
+        gap: 10px;
+    }
+
+    .menu-item span {
+        display: none;
+    }
+
+    /* icon-only compact mode */
+    .menu-item {
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .popup-menu {
+        right: 8px;
+        min-width: 140px;
+        top: calc(100% + 6px);
+    }
+}
+
+/* accessibility: focus state */
+.menu-item:focus,
+.menu-item:focus-visible,
+.popup-menu div:focus,
+.popup-menu div:focus-visible,
+.avatar-container:focus-visible {
+    outline: 2px solid var(--button-blue);
+    outline-offset: 2px;
+}
+
+/* small visual tweaks to match Achievements table style */
+.menu-container[data-theme="Default"] .menu-item span,
+.menu-container[data-theme="Default"] .menu-item img {
+    filter: var(--game-button-filter);
+}
+
+/* ensure right-section avatars do not overflow */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* optional: subtle badge for avatar name (if used) */
+.avatar-name {
+    color: var(--general-text-color-head);
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+/* ensure menu items are keyboard accessible */
+.menu-item {
+    outline: none;
+}
+
+.menu-item[role="button"] {
+    cursor: pointer;
+}
+
+.avatar-frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    background: linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(0, 0, 0, 0.08)
+    );
+
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08);
+
+    transition: transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.avatar-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.avatar-frame--loaded {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.avatar-frame--fallback {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar-container:hover .avatar-frame {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 180ms ease,
+    filter 180ms ease,
+    opacity 180ms ease;
+}
+
+.avatar--loaded {
+    opacity: 1;
+}
+
+.avatar--fallback {
+    opacity: 0.92;
+    filter: saturate(0.92) contrast(0.98);
+}
