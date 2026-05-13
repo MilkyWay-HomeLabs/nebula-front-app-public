@@ -1,0 +1,123 @@
+@import url('Themes.css');
+
+/* Tile — uses theme variables for background and border so cards are visible on all themes */
+.game-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* center content vertically while keeping name near bottom */
+    justify-content: center;
+
+    width: 100%;
+    max-width: 220px;
+    min-height: 200px; /* reserve vertical space to avoid large gaps */
+    padding: 12px;
+    gap: 8px;
+    box-sizing: border-box;
+
+    background: var(--game-tile-bg, rgba(0, 0, 0, 0.05));
+    border-radius: 12px;
+    border: 1px solid var(--game-tile-border, rgba(0, 0, 0, 0.09));
+    filter: none;
+    cursor: pointer;
+
+    transition: transform 200ms ease, box-shadow 180ms ease, background 160ms ease;
+    text-align: center;
+}
+
+/* Card hover */
+.game-button:hover:not(:disabled) {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(8, 10, 16, 0.12);
+    background: var(--game-tile-hover, rgba(0, 0, 0, 0.09));
+}
+
+/* Disabled */
+.game-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Icon wrapper handled via the img element (flex child) */
+.game-button .game-icon {
+    /* allow icon area to take available vertical space but not overflow tile */
+    flex: 1 1 auto;
+    width: 70%;
+    max-width: 140px;
+    max-height: 120px;
+    height: auto;
+    object-fit: contain; /* important for SVG / images with different aspect */
+    display: block;
+    margin: 6px auto 0 auto;
+    transition: transform 220ms ease;
+    filter: var(--game-button-filter);
+}
+
+/* Small scale up on hover */
+.game-button:hover .game-icon {
+    transform: scale(1.03);
+}
+
+/* Name area stays compact near bottom */
+.game-button .game-name {
+    margin-top: 10px;
+    font-size: clamp(0.78rem, 1.0vw, 0.95rem);
+    color: var(--general-text-color-body);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    flex: 0 0 auto; /* ensure name doesn't grow and push layout */
+}
+
+/* Optional small caption style — use theme body color so it's readable on all themes */
+.game-button .game-sub {
+    font-size: 0.75rem;
+    color: var(--general-text-color-body);
+    opacity: 0.65;
+}
+
+/* Ensure images do not capture pointer events */
+.game-button img {
+    pointer-events: none;
+}
+
+/* Make tiles look lighter on dark themes — already handled via --game-tile-bg variable */
+.menu-style-dark .game-button {
+    background: var(--game-tile-bg, rgba(255, 255, 255, 0.07));
+}
+
+/* If SVGs have huge viewBox whitespace, a CSS fallback: use transform to scale down visually */
+/* Use with caution - better to edit SVG viewBox when possible */
+.game-button .game-icon.svg-trim {
+    transform-origin: center;
+    /* optional example scale; adjust if you actually need to shrink visuals */
+    /* transform: scale(0.9); */
+}
+
+/* Grid container tips (if used together with the grid in Main.css) */
+/* If you want equal-height tiles: ensure grid-auto-rows is set in container, or use this: */
+.game-button {
+    /* keep consistent height visually even with variable content */
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+    .game-button {
+        min-height: 160px;
+        padding: 10px;
+        max-width: 180px;
+    }
+
+    .game-button .game-icon {
+        max-width: 120px;
+        max-height: 100px;
+    }
+
+    .game-button .game-name {
+        font-size: 0.9rem;
+    }
+}
