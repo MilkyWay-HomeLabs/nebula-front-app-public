@@ -1,0 +1,40 @@
+@import url('Themes.css');
+
+body,
+.theme-style {
+    background: var(--general-bg-color-body);
+    color: var(--general-text-color-body);
+}
+
+.content {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-y: auto;
+}
+
+.full-page-container {
+    width: 100%;
+    /* removed min-height to avoid large empty space when few items are present */
+    padding: clamp(10px, 2.5vw, 20px);
+    box-sizing: border-box;
+
+    /* grid layout for evenly sized tiles */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 220px));
+    justify-content: center;
+    align-items: start;
+
+    /* uniform gap, rows sized to content */
+    gap: 12px;
+    row-gap: 12px;
+    grid-auto-rows: auto;
+}
+
+/* Wrapper for all subpages — grows to fill remaining space above footer */
+.subpage-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}

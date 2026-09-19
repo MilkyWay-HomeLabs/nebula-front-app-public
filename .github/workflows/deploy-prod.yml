@@ -1,0 +1,95 @@
+# To be copied into the nebula-home repository as
+# .github/workflows/deploy-prod.yml (complementing the existing test/dev
+# workflow at .github/workflows/deploy.yml, which must NOT be overwritten).
+#
+# Pattern copied from ci-templates/andromeda/deploy.yml / nebula-rest:
+#   - Trigger is a merge from dev into main/master (pull_request "closed" +
+#     merged == true).
+#   - Multi-stage Docker build (Vite + nginx) produces
+#     ghcr.io/milkyway-homelabs/nebula-front-prod.
+#   - Rollout via `kubectl set image` + `kubectl rollout status` against
+#     deployment/nebula-front-prod in milkyway-apps.
+#
+# Requires the org-level self-hosted runner with labels
+# [self-hosted, Linux, ARM64, raspberry-pi, prod-k3s] on rpi5-prod-01
+# (same runner as Andromeda / Nebula REST).
+#
+# IMPORTANT: do not remove `prod-k3s` from runs-on — see
+# docs/prod/16-NEBULA-CICD.md troubleshooting for the test/dev runner collision.
+
+name: Deploy Nebula frontend to production (K3s)
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main, master]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-deploy:
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'dev'
+    runs-on: [self-hosted, Linux, ARM64, raspberry-pi, prod-k3s]
+    env:
+      IMAGE: ghcr.io/milkyway-homelabs/nebula-front-prod
+      NAMESPACE: milkyway-apps
+      DEPLOYMENT: nebula-front-prod
+      KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+      # Baked into the Vite build at image-build time (import.meta.env.*).
+      VITE_PUBLIC_URL: /nebula/app/
+      VITE_REQUEST_URL: https://milkyway.lab/nebula/api/v1
+      VITE_APACHE_DOMAIN: https://milkyway.lab/nebula/app/
+      VITE_RESOURCES_DOMAIN: https://milkyway.lab/resources/
+      VITE_TOMCAT_DOMAIN: https://milkyway.lab
+      # Frontend still sends Basic Authorization headers, but Nebula REST has
+      # httpBasic disabled (JWT + CSRF only). Values must be non-empty so
+      # Credentials.areCredentialsValid() passes; they are not server secrets.
+      VITE_USERNAME: nebula-front
+      VITE_PASSWORD: unused-basic-auth-disabled
+      VITE_CSRF_PROBE: "false"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+      - name: Compute image tag from commit SHA
+        id: vars
+        run: echo "tag=${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
+
+      - name: Build image (native arm64, multi-stage Vite + nginx)
+        run: |
+          set -euo pipefail
+          docker build \
+            --build-arg VITE_PUBLIC_URL="${VITE_PUBLIC_URL}" \
+            --build-arg VITE_REQUEST_URL="${VITE_REQUEST_URL}" \
+            --build-arg VITE_APACHE_DOMAIN="${VITE_APACHE_DOMAIN}" \
+            --build-arg VITE_RESOURCES_DOMAIN="${VITE_RESOURCES_DOMAIN}" \
+            --build-arg VITE_TOMCAT_DOMAIN="${VITE_TOMCAT_DOMAIN}" \
+            --build-arg VITE_USERNAME="${VITE_USERNAME}" \
+            --build-arg VITE_PASSWORD="${VITE_PASSWORD}" \
+            --build-arg VITE_CSRF_PROBE="${VITE_CSRF_PROBE}" \
+            -t "${IMAGE}:${{ steps.vars.outputs.tag }}" \
+            -t "${IMAGE}:latest" \
+            -f ci/nebula-front/Dockerfile .
+
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Push image
+        run: |
+          docker push "${IMAGE}:${{ steps.vars.outputs.tag }}"
+          docker push "${IMAGE}:latest"
+
+      - name: Roll out the new image on K3s
+        run: |
+          set -euo pipefail
+          sudo k3s kubectl -n "${NAMESPACE}" set image "deployment/${DEPLOYMENT}" \
+            "${DEPLOYMENT}=${IMAGE}:${{ steps.vars.outputs.tag }}"
+          sudo k3s kubectl -n "${NAMESPACE}" rollout status "deployment/${DEPLOYMENT}" --timeout=300s
+
+      - name: Clean up dangling local images
+        if: always()
+        run: docker image prune -f

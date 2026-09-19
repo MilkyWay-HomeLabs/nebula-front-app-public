@@ -1,0 +1,189 @@
+/* Achievements.css
+   Uses theme variables from Themes.css to integrate visually with the app.
+   Minimal comments.
+*/
+
+.full-page-container.achievements-page {
+  display: flex;
+  justify-content: center;
+  padding: clamp(16px, 2.5vw, 40px);
+  box-sizing: border-box;
+  background: var(--general-bg-color-body);
+  color: var(--general-text-color-body);
+}
+
+/* Card wrapper for table to visually group content */
+.custom-table-wrapper {
+  width: 100%;
+  max-width: 920px;            /* comfortable reading width */
+  background: rgba(0,0,0,0.04);/* subtle panel background, will blend with theme */
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Table base */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* avoid layout shifts when content loads */
+}
+
+/* Head */
+.custom-table thead th {
+  padding: 14px 18px;
+  text-align: left;
+  font-weight: 700;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  color: var(--general-text-color-body); /* use body color for readable headers */
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  opacity: 0.95;
+}
+
+/* Rows */
+.custom-table tbody tr {
+  transition: background 220ms ease, transform 200ms ease;
+}
+
+.custom-table tbody tr:hover {
+  background: rgba(0,0,0,0.03);
+  transform: translateY(-1px);
+}
+
+.custom-table td {
+  padding: 14px 18px;
+  vertical-align: middle;
+  color: var(--general-text-color-body);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  word-wrap: break-word;
+}
+
+/* Tighter paddings for better fit */
+.custom-table td {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Fix column widths to avoid large gap between ID and icon */
+.custom-table th:nth-child(1),
+.custom-table td:nth-child(1) {
+  width: 56px;            /* compact id column */
+  max-width: 56px;
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.custom-table th:nth-child(2),
+.custom-table td:nth-child(2) {
+  width: 72px;            /* icon column reserved width */
+  max-width: 72px;
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+/* Icon cell: reserve space and center */
+.achievement-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: var(--game-button-filter); /* preserves themed tinting if used */
+}
+
+/* Per-game source badge */
+.source-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(0,0,0,0.08);
+  color: var(--general-text-color-body);
+  white-space: nowrap;
+}
+.source-badge-unknown {
+  opacity: 0.5;
+  background: transparent;
+  padding-left: 0;
+}
+
+/* Star rating style using theme variables */
+.star-container {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.star-container [data-testid="star"] {
+  color: var(--star-achievement-empty);
+  opacity: 0.85;
+  font-size: 18px;
+  line-height: 1;
+  transition: color 180ms ease, transform 160ms ease;
+}
+.star-container .gold-star {
+  color: var(--star-achievement-full);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+.star-container [data-testid="star"]:hover {
+  transform: translateY(-2px);
+}
+
+/* Empty state */
+.custom-table tbody tr td[colspan] {
+  padding: 28px;
+  font-style: italic;
+  color: var(--general-text-color-body);
+}
+
+/* Skeleton placeholders */
+.skeleton-row .skeleton-cell {
+  height: 48px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.02) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.2s linear infinite;
+}
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* Responsive: make table narrower on small screens and allow scroll */
+@media (max-width: 880px) {
+  .full-page-container.achievements-page {
+    padding: 12px;
+  }
+  .custom-table-wrapper {
+    margin: 0 8px;
+  }
+  .custom-table thead {
+    display: none; /* simplify for small screens */
+  }
+  .custom-table, .custom-table tbody, .custom-table tr, .custom-table td {
+    display: block;
+    width: 100%;
+  }
+  .custom-table tr {
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .custom-table td {
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .custom-table td::before {
+    /* small label before each value on mobile */
+    content: attr(data-label);
+    display: inline-block;
+    min-width: 90px;
+    font-weight: 600;
+    margin-right: 8px;
+    color: var(--general-text-color-body);
+  }
+  .achievement-icon { width: 32px; height: 32px; }
+}
